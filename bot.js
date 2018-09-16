@@ -26,13 +26,13 @@ client.on('message', message => {
     const command = client.commands.get(commandName)
     || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-    if (!command) return message.reply(`Ik ken dat command niet, gebruik \`${prefix}help \` om te zien wat ik allemaal kan. `);
+    if (!command) return message.reply(`ik ken dat command niet, gebruik \`${prefix}help \` om te zien wat ik allemaal kan. `);
 
     if (command.guildOnly && message.channel.type !== 'text') {
         return message.reply('Ik kan dit command niet in DMs uitvoeren!');
     }
 
-    if (!message.member.hasPermission(command.permission)) return message.reply('Je hebt niet de permissies om dit command uit te voeren!');
+    if (!message.member.hasPermission(command.permission)) return message.reply('je hebt niet de permissies om dit command uit te voeren!');
 
     if (command.args && !args.length) {
         let reply = `Dit command heeft argumenten nodig, ${message.author}!`;
@@ -60,7 +60,7 @@ client.on('message', message => {
 
         if (now < expirationTime) {
             const timeLeft = (expirationTime - now) / 1000;
-            return message.reply(`Héé, niet spammen hé, wacht ${timeLeft.toFixed(1)} seconden tot het opnieuw gebruiken van het \`${command.name}\` command.`);
+            return message.reply(`Hé, niet spammen hè, wacht ${timeLeft.toFixed(1)} seconden tot het opnieuw gebruiken van het \`${command.name}\` command.`);
         }
 
         timestamps.set(message.author.id, now);
