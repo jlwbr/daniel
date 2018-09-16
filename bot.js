@@ -8,6 +8,8 @@ client.commands = new Discord.Collection();
 const cooldowns = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
+global.servers = {};
+
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
     client.commands.set(command.name, command);
@@ -32,8 +34,9 @@ client.on('message', message => {
         return message.reply('Ik kan dit command niet in DMs uitvoeren!');
     }
 
-    if (!message.member.hasPermission(command.permission)) return message.reply('je hebt niet de permissies om dit command uit te voeren!');
-
+    if (command.permission) {
+        if (!message.member.hasPermission(command.permission)) return message.reply('je hebt niet de permissies om dit command uit te voeren!');
+    }
     if (command.args && !args.length) {
         let reply = `Dit command heeft argumenten nodig, ${message.author}!`;
 

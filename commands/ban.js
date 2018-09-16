@@ -4,7 +4,7 @@ module.exports = {
     name: 'ban',
     description: 'Ban een gebruiker.',
     usage: '[naam gebruiker]',
-    permission: [ 'KICK_MEMBERS' ],
+    permission: [ 'BAN_MEMBERS' ],
     guildOnly: true,
     execute(message) {
         const user = message.mentions.users.first();
