@@ -12,14 +12,14 @@ module.exports = {
           const member = message.guild.member(user);
           if (member) {
             member.kick('Gekickt via bot').then(() => {
-              message.reply(`${user.tag} is succesvol gekickt`);
+              message.reply(`${user.tag} is succesvol gekickt!`);
             }).catch(err => {
-              message.reply('ik kon deze persoon niet kicken');
+              message.reply('ik kon deze persoon niet kicken!');
               logger.error(err);
             });
           }
           else {
-            message.reply('deze gebruiker is geen lid niet van deze server!');
+            message.reply('deze gebruiker is geen lid van deze server!');
           }
         }
         else {
