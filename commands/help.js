@@ -3,7 +3,7 @@ const { prefix } = require('../config/config.js');
 
 module.exports = {
     name: 'help',
-    description: 'hier vind je alle commands.',
+    description: 'Hier vind je alle commands.',
     aliases: ['commands'],
     usage: '[command name]',
     cooldown: 5,
@@ -17,18 +17,18 @@ module.exports = {
             return message.author.send(data, { split: true })
             .then(() => {
                 if (message.channel.type === 'dm') return;
-                message.reply('Ik heb je een DM gestuurd met al mijn commands!');
+                message.reply('ik heb je een DM gestuurd met al mijn commands!');
             })
             .catch(error => {
                 logger.error(`Kon geen dm sturen naar ${message.author.tag}.\n`, error);
-                logger.reply('het ziet er naar uit dat ik jouw geen DM\'s kan sturen heb je DM uitstaan?');
+                logger.reply('het ziet er naar uit dat ik jouw geen DM\'s kan sturen, heb je DM uitstaan?');
             });
         }
         const name = args[0].toLowerCase();
         const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 
         if (!command) {
-            return message.reply('that\'s not a valid command!');
+            return message.reply('dat is geen geldige command!');
         }
 
         data.push(`**Naam:** ${command.name}`);
