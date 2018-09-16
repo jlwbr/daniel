@@ -1,15 +1,15 @@
 module.exports = {
     name: 'flip',
     aliases: ['coin', 'toss'],
-    description: 'flip een muntje.',
+    description: 'Flip een muntje.',
     cooldown: 5,
     execute(message) {
         const int = Math.floor(Math.random() * 2);
         if (int === 0) {
-            return message.channel.send('Je gooide kop');
+            return message.channel.send('Je gooide kop!');
         }
         else {
-            return message.channel.send('Je gooide munt');
+            return message.channel.send('Je gooide munt!');
         }
     },
 };
