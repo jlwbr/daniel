@@ -74,8 +74,8 @@ client.on('message', message => {
         command.execute(message, args);
     }
     catch (error) {
-        logger.error(error);
-        message.reply('Er was een error tijdens het uitvoeren van dat command!');
+        console.error(error);
+        message.reply('er was een error tijdens het uitvoeren van dat command!');
     }
 });
 
