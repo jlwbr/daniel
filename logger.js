@@ -9,7 +9,7 @@ winston.configure({
           timestamp: true,
           filename: 'error.log',
           level: 'error',
-          handleExceptions: true
+          handleExceptions: false
         }),
       new winston.transports.File({
           filename: 'combined.log'

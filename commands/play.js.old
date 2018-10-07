@@ -7,10 +7,13 @@ const youtube = new YouTube(google_api_key);
 
 function play(connection, message) {
     const server = servers[message.guild.id];
-    server.dispatcher = connection.playArbitraryInput(ytdl(
-        server.queue[0].url,
-        { filter: 'audioonly' }));
-    message.channel.send(`${server.queue[0].title} wordt voor je gedraaid.`);
+    if(!server.playing) {
+        server.dispatcher = connection.playArbitraryInput(ytdl(
+            server.queue[0].url,
+            { filter: 'audioonly' }));
+        server.playing = true;
+        message.channel.send(`${server.queue[0].title} wordt voor je gedraaid.`);
+    }
     server.dispatcher.on('end', function() {
         if(server.queue[0]) {
             play(connection, message);

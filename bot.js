@@ -2,6 +2,7 @@ const fs = require('fs');
 const Discord = require('discord.js');
 const { token, prefix } = require('./config/config.js');
 const logger = require('./logger.js');
+const newuser = require('./newuser.js');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -19,8 +20,19 @@ client.on('ready', () => {
     logger.info('Bot ready');
 });
 
+client.on('guildMemberAdd', (member) => {
+    member.guild.channels.get('493141717260828672').send('Welkom op deze Discord server');
+    member.guild.channels.get('493141717260828672').send('Om deze server te kunnen joinen moeten we een paar dingen van je weten');
+    member.guild.channels.get('493141717260828672').send('Om te beginnen, heb je een ');
+
+
+});
+
 client.on('message', message => {
-    if (!message.content.startsWith(prefix) || message.author.bot) return;
+    if(message.channel.id === '493141717260828672') {
+        newuser(message);
+    }
+    if(!message.content.startsWith(prefix) || message.author.bot) return;
 
     const args = message.content.slice(prefix.length).split(/ +/);
     const commandName = args.shift().toLowerCase();
