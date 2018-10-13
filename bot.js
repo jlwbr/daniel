@@ -9,8 +9,6 @@ client.commands = new Discord.Collection();
 const cooldowns = new Discord.Collection();
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
-global.servers = {};
-
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
     client.commands.set(command.name, command);
@@ -24,12 +22,10 @@ client.on('guildMemberAdd', (member) => {
     member.guild.channels.get('493141717260828672').send('Welkom op deze Discord server');
     member.guild.channels.get('493141717260828672').send('Om deze server te kunnen joinen moeten we een paar dingen van je weten');
     member.guild.channels.get('493141717260828672').send('Om te beginnen, heb je een ');
-
-
 });
 
 client.on('message', message => {
-    if(message.channel.id === '493141717260828672') {
+    if(message.channel.id === '493141717260828672' && !message.author.bot) {
         newuser(message);
     }
     if(!message.content.startsWith(prefix) || message.author.bot) return;

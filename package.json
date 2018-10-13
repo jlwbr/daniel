@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node bot.js",
-    "startDev": "nodemon bot.js"
+    "startDev": "nodemon --inspect --ignore db.json bot.js"
   },
   "author": "Joel Weber",
   "license": "MIT",
@@ -14,6 +14,7 @@
     "discord.js": "^11.4.2",
     "dotenv": "^6.0.0",
     "ffmpeg-binaries": "^4.0.0",
+    "lowdb": "^1.0.0",
     "node-opus": "^0.3.0",
     "opusscript": "0.0.6",
     "simple-youtube-api": "^5.0.2",
