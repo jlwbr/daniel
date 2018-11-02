@@ -4,7 +4,7 @@ module.exports = {
     description: 'Gooi met een dobbelsteen.',
     usage: '[aantal zijden]',
     execute(message, arg) {
-        if (!arg.lenght) {
+        if (!arg.length) {
             const dice = Math.floor((Math.random() * 5) + 1);
             return message.channel.send('Je gooide ' + dice + '!');
         }
