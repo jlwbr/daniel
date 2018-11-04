@@ -1,3 +1,15 @@
 image: node
 matrix:
   - env: SCRIPT=test NODE_VERSION=10
+
+before_install:
+  - nvm install $NODE_VERSION
+
+install:
+  - yarn install
+
+script:
+  - if [[ "$SCRIPT" ]]; then yarn $SCRIPT; fi
+
+cache:
+  - node_modules
