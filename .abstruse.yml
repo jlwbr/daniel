@@ -1,9 +1,6 @@
 image: node
 matrix:
-  - env: SCRIPT=test NODE_VERSION=10
-
-before_install:
-  - nvm install node
+  - env: SCRIPT=test
 
 install:
   - yarn install
