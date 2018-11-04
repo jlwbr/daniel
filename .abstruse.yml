@@ -3,7 +3,7 @@ matrix:
   - env: SCRIPT=test
 
 install:
-  - yarn install
+  - yarn
 
 script:
   - if [[ "$SCRIPT" ]]; then yarn $SCRIPT; fi
