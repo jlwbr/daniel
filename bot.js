@@ -96,7 +96,7 @@ client.on("message", message => {
           1
         )} seconden tot het opnieuw gebruiken van het \`${
           command.name
-        }\` command.`
+        }\` commando.`
       );
     }
 
